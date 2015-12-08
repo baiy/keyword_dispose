@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>关键字处理工具</title>
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+var app = {};
+</script>
+<script src="main.js"></script>
+</head>
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <ol class="breadcrumb">
+              <li><a href="/">首页</a></li>
+              <li><a href="#">关键字处理工具</a></li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">待处理数据[<span class="total">数量:0</span>][<a href="javascript:;" onclick="app.clear('deal_textarea')">清空</a>]</div>
+                    <div class="panel-body">
+                        <textarea class="form-control" id="deal_textarea" rows="15" onchange="app.total($(this))"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">处理结果[<span class="total">数量:0</span>][<a href="javascript:;" onclick="app.clear('results_textarea')">清空</a>][<a href="javascript:;" onclick="app.export()">导出</a>]</div>
+                    <div class="panel-body">
+                        <textarea class="form-control" id="results_textarea" rows="15" onchange="app.total($(this))"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <select class="form-control" id="oprion_extract">
+                            <option value="0">不抽取</option>
+                            <option value="1">抽取[关键字全匹配]</option>
+                            <option value="2">抽取[关键字部分匹配]</option>
+                        </select>
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" id="extract_config" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <select class="form-control" id="oprion_out">
+                            <option value="0">不排除</option>
+                            <option value="1">排除[关键字全匹配]</option>
+                            <option value="2">排除[关键字部分匹配]</option>
+                        </select>
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" id="out_config" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <strong>其他选项</strong>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="input_repeat" checked value="1"> 去除重复
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="button_submit" onclick="app.submit()">提交处理</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
