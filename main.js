@@ -22,7 +22,11 @@ app = {
             if($("#input_repeat").prop("checked")){
                 results = this.unique(results);
             }
-            $("#results_textarea").val(results.join("\n"));
+            results = results.join("\n");
+            if($("#input_overlay").prop("checked") && $("#results_textarea").val() != ''){
+                results = $("#results_textarea").val()+"\n"+results;
+            }
+            $("#results_textarea").val(results);
             this.total($("#results_textarea"));
             alert("处理完成");
         }
